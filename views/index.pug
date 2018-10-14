@@ -1,0 +1,29 @@
+doctype html  
+html(lang='en')  
+ head
+   title TodoApp
+ body
+   h1 Todo list  App
+   
+   div.container
+     form(action='/addtodo' method='POST')
+       input(type='text' name='newtodo' placeholder='add new todo')
+       button(type='submit' formaction='/addtodo') added todo
+       h2 Added Todo's
+        button(formaction='/remove' type="submit") remove
+       
+       ul
+         each todo1 in todo 
+           li= todo1
+            input(type='checkbox' name='check' value=todo1)
+              
+              
+       
+       
+      
+
+         
+         
+         
+											
+						
