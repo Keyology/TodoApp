@@ -29,9 +29,9 @@ app.post('/remove', (req,res) => {
     remove.push(removeTodo);
     todo.splice(todo.indexOf(removeTodo), 1);
   } else if (typeof removeTodo === "object") {
-    for(let i = o; i < removeTodo.length; i++){
+    for(let i = 0; i < removeTodo.length; i++){
       remove.push(removeTodo[i]);
-      todo.splice(task.indexOf(removeTask[i]), 1);
+      todo.splice(todo.indexOf(removeTodo[i]), 1);
     }
   }
   res.redirect('/');
