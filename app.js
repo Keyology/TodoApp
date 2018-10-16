@@ -67,3 +67,5 @@ app.post('/remove', (req,res) => {
 
 
 app.listen(port, () => console.log(`Running on port ${port}`));
+
+module.exports = app
