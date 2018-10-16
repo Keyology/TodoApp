@@ -15,8 +15,28 @@ html(lang='en')
        ul
          each todo1 in todo 
            li= todo1
-            input(type='checkbox' name='check' value=todo1)
+              input(type='checkbox' name='check' value=todo1)
+                    
+       h1 Take Note
+       form(action='/addnote' method='POST')
+         input(type='text' name='newnote' placeholder='create new note')
+         button(type='submit' formaction='/addnote') Add note
+           
+       h2 Notes
+       form(action='/removenote' method='POST') 
+         button(formaction='/removenote' type="submit") remove note
+         
+         each note1 in note 
+           p= note1
+            input(type='checkbox' name='check' value=note1)
+           
+                  
               
+              
+              
+                
+              
+          
               
        
        

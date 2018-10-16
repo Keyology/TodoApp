@@ -9,10 +9,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let todo = [];
 let remove = [];
+let note = [];
+let removeNote = [];
 
 
 app.get('/', (req,res) => {
-  res.render('index', {todo: todo});
+  res.render('index', {todo: todo, note: note});
+
 })
 
 app.post('/addtodo', (req,res) => {
@@ -21,6 +24,30 @@ app.post('/addtodo', (req,res) => {
   todo.push(newTodo);
   res.redirect('/');
 })
+
+app.post('/addnote', (req,res) => {
+  let newNote = req.body.newnote;
+  console.log(newNote);
+  note.push(newNote);
+  res.redirect('/');
+  console.log(note);
+
+})
+
+app.post('/removenote', (req,res) => {
+  const removeNote1 = req.body.check;
+  if(typeof  removeNote1 === "string"){
+    removeNote.push(removeNote1);
+    note.splice(note.indexOf(removeNote1), 1);
+  } else if (typeof removeNote1 === "object") {
+    for(let i = 0; i < removeNote1.length; i++){
+      removeNote.push(removeNote1[i]);
+      note.splice(note.indexOf(removeNote1[i]), 1);
+    }
+  }
+  res.redirect('/');
+});
+
 
 app.post('/remove', (req,res) => {
   const removeTodo = req.body.check;
@@ -36,6 +63,7 @@ app.post('/remove', (req,res) => {
   }
   res.redirect('/');
 });
+
 
 
 app.listen(port, () => console.log(`Running on port ${port}`));
