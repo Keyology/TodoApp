@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 3000;
+const port =  3000;
 
 
 app.set('view engine', 'pug');
@@ -66,6 +66,6 @@ app.post('/remove', (req,res) => {
 
 
 
-app.listen(port, () => console.log(`Running on port ${port}`));
+app.listen(process.env.PORT || 3000, () => console.log(`Running on port ${port}`));
 
 module.exports = app
